@@ -1,0 +1,21 @@
+sudo yum update -y
+sudo yum install -y docker
+sudo systemctl start docker
+sudo systemctl enable docker
+
+sudo usermod -aG docker $USER
+newgrp docker
+
+docker --version
+docker run hello-world
+
+docker pull dustynv/kokoro-tts:fastapi-r36.4.0
+
+docker run -d -p 8000:8000 --name kokoro-tts dustynv/kokoro-tts:fastapi-r36.4.0
+
+docker ps
+
+docker logs -f kokoro-tts
+
+hi there
+am vamshi
