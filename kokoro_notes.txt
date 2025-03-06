@@ -1,21 +1,23 @@
 sudo yum update -y
-sudo yum install -y docker
+sudo yum install docker unzip -y
 sudo systemctl start docker
-sudo systemctl enable docker
-
-sudo usermod -aG docker $USER
+sudo usermod -aG docker ec2-user
 newgrp docker
+
 
 docker --version
 docker run hello-world
 
-docker pull dustynv/kokoro-tts:fastapi-r36.4.0
+sudo yum install python3 -y
 
-docker run -d -p 8000:8000 --name kokoro-tts dustynv/kokoro-tts:fastapi-r36.4.0
+sudo yum install git pip
 
-docker ps
+git clone https://github.com/vamshigvk/kokoro-swagger.git
 
-docker logs -f kokoro-tts
+cd kokoro-swagger
+cd libraries
+unzip kokoro.zip
+pip install ./kokoro
+cd ..
 
-hi there
-am vamshi
+pip install -r requirements.txt
