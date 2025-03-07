@@ -39,18 +39,42 @@ sudo systemctl enable docker
 sudo systemctl start docker
 
 git clone https://github.com/vamshigvk/kokoro-swagger.git
+cd kokoro-swagger
 
-nohup uvicorn app:app --host 0.0.0.0 --port 8080 --reload > log.txt 2>&1 &
-
-
-aws s3 cp . s3://frauddetectdata/kokoro-swagger/ --recursive --exclude ".git/*"
-
-aws s3 cp s3://frauddetectdata/kokoro-swagger/ . --recursive
-
+sudo apt install python3.12-venv
 
 python3 -m venv venv
 source venv/bin/activate
 
-http://3.87.154.211:8080/docs
+
+pip install -r requirements.txt
+
+pip list
+
+nohup uvicorn app:app --host 0.0.0.0 --port 8080 --reload > log.txt 2>&1 &
+
+
+
+
+http://54.197.205.187:8080/docs
 
 _________________
+
+
+docker login
+
+dreamteam0012@icloud.com
+mustard0012
+Calendar@0012
+
+
+docker build -t mustard0012/kokoro-app .
+docker run -d -p 8080:8080 mustard0012/kokoro-app
+docker tag mustard0012/kokoro-app mustard0012/kokoro-app:v1
+docker push mustard0012/kokoro-app:v1
+
+
+# to stop uvicorn running with nohup
+ps aux | grep uvicorn
+kill 12345
+

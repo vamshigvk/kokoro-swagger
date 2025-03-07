@@ -5,3 +5,4 @@ uvicorn
 numpy
 pydantic
 misaki
+python-multipart
