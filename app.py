@@ -8,6 +8,15 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from enum import Enum
 from kokoro import KPipeline
+import os
+
+# Get the current working directory
+current_dir = os.getcwd()
+# Define the cache folder inside the current directory
+hf_cache_dir = os.path.join(current_dir, "huggingface")
+# Set HF_HOME environment variable dynamically
+os.environ["HF_HOME"] = hf_cache_dir
+print(f"HF_HOME is set to: {os.environ['HF_HOME']}")
 
 # Initialize FastAPI
 app = FastAPI()

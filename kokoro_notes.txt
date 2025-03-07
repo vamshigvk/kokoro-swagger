@@ -1,8 +1,10 @@
+# aws ami
+
 sudo yum update -y
 sudo yum install docker unzip -y
 sudo systemctl start docker
-sudo usermod -aG docker ec2-user
 newgrp docker
+sudo usermod -aG docker ec2-user
 
 
 docker --version
@@ -21,3 +23,34 @@ pip install ./kokoro
 cd ..
 
 pip install -r requirements.txt
+python3 -c "import site; print(site.getsitepackages())"
+mv kokoro1 /usr/local/lib/python3.9/site-packages/
+
+
+_________________
+
+# linux ami
+
+sudo apt update -y
+
+sudo apt install -y docker.io python3 python3-pip git
+
+sudo systemctl enable docker
+sudo systemctl start docker
+
+git clone https://github.com/vamshigvk/kokoro-swagger.git
+
+nohup uvicorn app:app --host 0.0.0.0 --port 8080 --reload > log.txt 2>&1 &
+
+
+aws s3 cp . s3://frauddetectdata/kokoro-swagger/ --recursive --exclude ".git/*"
+
+aws s3 cp s3://frauddetectdata/kokoro-swagger/ . --recursive
+
+
+python3 -m venv venv
+source venv/bin/activate
+
+http://3.87.154.211:8080/docs
+
+_________________
