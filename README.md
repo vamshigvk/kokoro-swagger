@@ -11,3 +11,11 @@ import os
 openai_api_key = os.getenv("OPENAI_API_KEY")
 print(openai_api_key)  # Should print your API key
 ```
+- Run swagger from cmd:
+```
+uvicorn app:app --host 0.0.0.0 --port 8080 --reload
+```
+- Run Streamlit from cmd:
+```
+streamlit run app.py
+```
