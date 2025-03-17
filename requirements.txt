@@ -1,8 +1,0 @@
-kokoro==0.8.2
-soundfile
-fastapi
-uvicorn
-numpy
-pydantic
-misaki
-python-multipart
