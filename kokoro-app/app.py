@@ -120,10 +120,10 @@ def generate_transcript(script_text, voice1, voice2):
     """
     print("Generating podcast transcript...")
     try:
-        prompt = f"""
-        Create a natural-sounding podcast conversation with voices {voice1} and {voice2}:
-        {script_text}
-        """
+        prompt = f"""TASK:\n- Create a natural-sounding podcast conversation based on the following SCRIPT.\n- Use human-like elements such as fillers, emotions, and natural flow.\n- Ensure that "Emma" and "Ryan" sound distinct with voice names {voice1} and {voice2}.
+        SCRIPT: {script_text}
+        OUTPUT_FORMAT: [("Hello everyone! Welcome to our podcast!", "voice1"),\n("Today, we will discuss AI innovations.", "voice2"),\n("Stay tuned for more updates!", "voice1")]
+        OUTPUT_GUIDELINES:\n- Strictly print the output in OUTPUT_FORMAT\n- No words or characters before or after OUTPUT_FORMAT"""
         response = openai.ChatCompletion.create(
             model="gpt-4o",
             messages=[

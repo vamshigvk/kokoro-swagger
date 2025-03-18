@@ -99,9 +99,9 @@ elif page == "Podcast":
     if uploaded_file:
         col1, col2, col3 = st.columns(3)
         with col1:
-            female_voice = st.selectbox("👩 *Select Female Voice*", ["af_sarah", "af_heart", "a_bella", "af_sky"])
+            female_voice = st.selectbox("👩 *Select Female Voice*", ["af_alloy", "af_aoede", "af_bella", "af_heart", "af_jessica", "af_kore", "af_nicole", "af_nova", "af_river", "af_sarah", "af_sky"])
         with col2:
-            male_voice = st.selectbox("👨 *Select Male Voice*", ["am_michael", "am_john", "am_david", "am_ryan"])
+            male_voice = st.selectbox("👨 *Select Male Voice*", ["am_adam", "am_echo", "am_eric", "am_fenrir", "am_liam", "am_michael", "am_onyx", "am_puck", "am_santa"])
         with col3:
             generate_podcast = st.button("🎤 Generate Podcast")
         
